@@ -1,0 +1,347 @@
+.login-form-container{
+    display: flex;
+    justify-content: center;
+    background: rgba(221, 221, 221, 0.027);
+    height: 100vh;
+}
+
+.login-form{
+    width: 250px;
+    height: 250px;
+    align-self: center;
+}
+
+.login-form input{
+    outline: none;
+    border-radius: 10px;
+    height: 45px;
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0.5); 
+}
+
+.login-form input:hover{
+    outline: none;
+    border-radius: 10px;
+    height: 45px;
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0); 
+}
+
+.login-form input:focus{
+    outline: none;
+    border-radius: 10px;
+    height: 45px;
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0); 
+}
+
+.login-form-button{
+    width: 250px;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 18px;
+    background: #e9b301;
+    border:none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0.5);
+    color: white;
+    font-weight: 500;
+}
+
+.login-form-button:focus{
+    width: 250px;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 18px;
+    background: white;
+    border:none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0.5);
+    color: #e9b301;
+    font-weight: 500;
+}
+
+.login-form-button:hover{
+    width: 250px;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 18px;
+    background: white;
+    border:none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 11px 5px -11px rgba(0,0,0,0);
+    color: #e9b301;
+    font-weight: 500;
+}
+
+
+.main-container{
+    height: 100vh
+}
+/* header */
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .7s;
+    box-shadow: 6px 0px 4px -4px rgba(0,0,0,0.5);
+  }
+  
+ .trigger:hover {
+    color:red;
+  }
+  
+  .logo {
+    height: 32px;
+    background: rgba(255,255,255,.2);
+    margin: 16px;
+  }
+
+  .header-logout-button{
+    float: right;
+    top: 25%;
+    right: 1%;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
+  }
+
+  .header-logout-button:hover{
+    float: right;
+    top: 25%;
+    right: 1%;
+    border: 1px solid #e9b301;
+  }
+
+  .header-logout-button:focus{
+    float: right;
+    top: 25%;
+    right: 1%;
+    border: 1px solid #e9b301;
+  }
+
+  .header-logout-button i{
+    color:#e9b301;
+  }
+
+  /* Sider */
+.ant-layout-sider{
+    opacity: 0.9;
+    background: none;
+    background: white;
+    box-shadow: 6px 0px 8px -4px rgba(0,0,0,0.5);
+} 
+
+.main-side-menu{
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color:none; 
+    background: white;
+}
+.main-side-menu .ant-menu-item{
+    margin: 0px;
+    line-height: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+}
+
+.main-side-menu .ant-menu-item:hover{
+    margin: 0px;
+    line-height: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 1px -1px rgba(0,0,0,0.8);
+}
+
+.main-side-menu .ant-menu-item::after{
+    font-size: 18px;
+    border-right: 3px solid red;
+} 
+
+.main-side-menu .ant-menu-item svg{
+    padding: 0px;
+}
+
+.main-side-menu .ant-menu-item a{
+    font-size: 18px;
+    color: #e9b301;
+}
+
+.main-side-menu-icon-container{
+    padding-right: 30px;
+}
+
+.analytics-form-container{
+    margin: none;
+    padding: 30px;
+}
+
+.analytics-form-input-group{
+    padding-bottom: 10px;
+}
+
+.analytics-form-input-group-title{
+    color: #e9b301;
+    font-size: 24;
+    font-weight: 500;
+}
+.analytics-form-input .ant-select-selection{
+    border: none;
+    border: 1px solid #e9b301;
+}
+
+.analytics-form-submit-button{
+    background: #e9b301;
+    color: white;
+    font-size: 24;
+    font-weight: 500;
+    border: 1px solid #e9b301;
+}
+
+.analytics-form-submit-button:hover{
+    background: white;
+    color: #e9b301;
+    font-size: 24;
+    font-weight: 500;
+    border: 1px solid #e9b301;
+}
+
+.ant-select-dropdown-menu-item-active{
+    background: rgba(252, 235, 1, 0.562);
+}
+
+.ant-select-dropdown-menu-item-active:hover{
+    background: rgba(252, 235, 1, 0.562);
+}
+
+.analytics-form-submit-button:focus{
+    background: #e9b301;
+    color: white;
+    font-size: 24;
+    font-weight: 500;
+    border: 1px solid #e9b301;
+}
+
+.analytics-form-input .ant-select-open{
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+}
+
+.analytics-table-container{
+    padding: 30px;
+    background: rgba(0,0,0,0.04);
+}
+
+.analytics-table > tr > th{
+    white-space: nowrap;
+}
+
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-thead > tr > th{
+    background-color: #e9b301;
+    color : white;
+}
+
+.ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-thead > tr > th{
+    background-color: #fdca20;
+    color : white;
+}
+
+.ant-table-small > .ant-table-content > .ant-table-fixed-right > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-thead > tr > th{
+    background-color: #fdca20;
+    color : white;
+}
+
+.ant-table-thead{
+    border-bottom: 2px solid rgba(255, 0, 0, 0.6);
+}
+
+.ant-table-tbody > tr > td{
+    white-space: nowrap;
+    color: rgb(94, 94, 94);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.ant-table-filter-dropdown .ant-select-selection{
+    border: none;
+    border: 1px solid #e9b301;
+    background: white; 
+}
+
+.ant-table-filter-dropdown input:hover{
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6); 
+    background: white;
+}
+
+.ant-table-filter-dropdown input:focus{
+    border: none;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+    background: white; 
+}
+
+.ant-table-filter-dropdown button{
+    background: white;
+    border: 1px solid #e9b301;
+    background: #e9b301;
+}
+.ant-table-filter-dropdown button:hover{
+    background: white;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+    color:#e9b301
+}
+.ant-table-filter-dropdown button:focus{
+    background: white;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+}
+
+.ant-pagination-item-active {
+    background: white;
+    border: 1px solid #e9b301;
+}
+
+.ant-pagination-item-active:hover {
+    background: white;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.6);
+}
+
+.ant-pagination-item-active:focus {
+    background: white;
+    border: 1px solid #e9b301;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.9);
+}
+
+.ant-pagination-item-active a{
+    color: black;
+}
+
+.ant-pagination-item-active a:hover{
+    color: black;
+}
+
+.ant-pagination-item-active a:focus{
+    color: black;
+}
+
+.map-container{
+    padding: 30px;
+    height: auto;
+    background: rgba(0,0,0,0.06);
+}
+
+.map{
+    height: 555px;
+    width: 100%;
+}

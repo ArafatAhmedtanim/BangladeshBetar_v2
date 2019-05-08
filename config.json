@@ -1,0 +1,4 @@
+{
+    "connectionString":"mongodb+srv://root:@cluster0-ouaoz.mongodb.net/test?retryWrites=true",
+    "secret":"HappyLife"
+}
