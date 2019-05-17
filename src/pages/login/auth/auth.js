@@ -4,14 +4,14 @@ import API from './../../../dataProvider/api.json';
 export default function Auth(values) {
   axios
     .post(API.HOST + API.LOGIN, {
-      username: values.userName,
+      email: values.email,
       password: values.password,
     })
     .then(res => {
       const user = {
-        name: res.data.username,
-        firstname: res.data.firstName,
-        lastname: res.data.lastName,
+        username: res.data.username,
+        email: res.data.email,
+        role: res.data.role,
         token: res.data.token,
       };
       localStorage.setItem('user', JSON.stringify({ user }));

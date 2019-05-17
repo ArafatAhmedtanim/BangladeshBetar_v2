@@ -15,16 +15,16 @@ class MyForm extends React.Component {
       <Content className="login-form-container">
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
-            {getFieldDecorator('userName', {
+            {getFieldDecorator('email', {
               rules: [
-                { required: true, message: 'Please Input Your User Name!' },
+                { required: true, message: 'Please Input Your Email!' },
               ],
             })(
               <Input
                 prefix={
                   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
-                placeholder="User Name"
+                placeholder="Email"
               />,
             )}
           </Form.Item>

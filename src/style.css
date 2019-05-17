@@ -96,9 +96,12 @@
   }
   
   .logo {
-    height: 32px;
-    background: rgba(255,255,255,.2);
-    margin: 16px;
+    height: 65px;
+    padding: 16px;
+    color: #e0ac01;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
   }
 
   .header-logout-button{
@@ -246,6 +249,13 @@
 .ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-thead > tr > th{
     background-color: #e9b301;
     color : white;
+}
+.ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-thead > tr > th.ant-table-column-sort{
+    background-color: #e9b301;
+    color : white;
+}
+.ant-table-column-sorter i {
+    color: red;
 }
 
 .ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-thead > tr > th{

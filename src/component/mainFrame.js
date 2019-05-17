@@ -1,14 +1,61 @@
 import React from 'react';
-import Sider from './../content/sider';
-import DataProvider from './../dataProvider/provider';
+import { Layout, Icon, Button } from 'antd';
+import MyMenu from './../utility/menuItem';
+import getSelectedContent from './../utility/menuController';
 import { DataConsumer } from './../dataProvider/provider';
 
-export default class MainFrame extends React.Component {
+const { Content, Sider, Header } = Layout;
+const signOutUser = props => {
+  try {
+    localStorage.clear();
+    window.location.href = "/";
+  } catch (e) {}
+};
+export default class MySider extends React.Component {
+  state = {
+    collapsed: true,
+    selectedMenu: '0',
+    bg_logoName: 'Bangladesh Betar',
+    sh_logoName: 'BB',
+  };
+
+  onCollapse = collapsed => this.setState({ collapsed });
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+  triggerSider = ({ key }) => localStorage.setItem('selectedMenu', key);
+
   render() {
     return (
-      <DataProvider>
-        <DataConsumer>{({ update }) => <Sider update={update} />}</DataConsumer>
-      </DataProvider>
+      <DataConsumer>
+        {({ selectedMenu }) => (
+          <Layout className="main-container">
+            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>{
+              this.state.collapsed?
+                <div className="logo" >{this.state.sh_logoName}</div>:
+                <div className="logo" >{this.state.bg_logoName}</div>
+              }
+              <MyMenu triggerSider={this.triggerSider} />
+            </Sider>
+
+            <Layout>
+              <Header style={{ background: '#fff', padding: 0 }}>
+                <Icon
+                  className="trigger"
+                  type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                  onClick={this.toggle}
+                />
+                <Button shape="circle" icon="logout" className="header-logout-button" onClick={signOutUser}/>
+              </Header>
+              <Content style={{ padding: '30px', hegiht: '100vh' }}>
+                {getSelectedContent(selectedMenu)}
+              </Content>
+            </Layout>
+          </Layout>
+        )}
+      </DataConsumer>
     );
   }
 }

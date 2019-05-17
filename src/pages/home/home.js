@@ -1,75 +1,42 @@
 import React from 'react';
-import Table from './component/analyticsTable.js';
-import Map from './component/analyticsMap.js';
-import Filter from './component/analyticsFilterForm.js';
-import {Row, Col} from 'antd';
 import { DataConsumer } from './../../dataProvider/provider';
+import UserTable from './../../component/table';
+import Axios from 'axios';
+import Api from  './../../dataProvider/api.json';
 
+import {AllUserTableCols} from './utility/allUserTableCol';
+ 
 export default class Home extends React.Component {
   constructor(props){
     super(props)
-  }
 
+    this.state={
+      users : [],
+    }
+  }
+  componentDidMount(){
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    Axios
+    .get(Api.HOST+Api.ALLUSER, {
+      headers: { Authorization: 'bearer ' + user.user.token }
+    })
+    .then(res => {
+      console.log(res.data)
+      this.setState({users: res.data})
+    })
+    .catch(error => {});
+  }
 
   render() {
     return (
-      <DataConsumer>{({ 
-        analyticsData,
-        filterAnalyticsData,
-
-        update,
-        filter,
-
-        division,
-        getDivision,
-
-        district,
-        getDistrict,
-
-        thana,
-        getThana,
-
-        selectedDivision,
-        selectedDistrict,
-        selectedThana, 
-      }) =>
-          analyticsData !== '' ? (
-            <div style={{background: 'white'}}>
-            <Row gutter={16}>
-              <Filter
-                division={division}
-                getDivision={getDivision}
-
-                district={district}
-                getDistrict={getDistrict}
-
-                // thana={thana}
-                // getThana={getThana}
-
-                selectedDivision={selectedDivision}
-                selectedDistrict={selectedDistrict}
-                selectedThana={selectedThana}
-
-                update={update}
-                data={analyticsData}
-                filterAnalyticsData={filterAnalyticsData}
-                filter={filter}
-              />
-            </Row>
-            <Row>
-              <Col xs={24} sm={24} md={12} lg={12}>
-                <Table update={update} data={filterAnalyticsData} />
-              </Col>
-              <Col xs={24} sm={24} md={12} lg={12}>
-                <Map data={filterAnalyticsData} />
-              </Col>
-            </Row>
-            </div>
-          ) : (
-            ''
-          )
-        }
-      </DataConsumer>
+      <DataConsumer>{() =>
+        <UserTable 
+          columns={AllUserTableCols} 
+          data={this.state.users} 
+          className={'all-user-table'}
+        />
+      }</DataConsumer>
     );
   }
 }

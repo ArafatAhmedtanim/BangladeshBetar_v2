@@ -15,6 +15,8 @@ export default class MySider extends React.Component {
   state = {
     collapsed: true,
     selectedMenu: '0',
+    bg_logoName: 'Quickly Global',
+    sh_logoName: 'QG',
   };
 
   onCollapse = collapsed => this.setState({ collapsed });
@@ -30,8 +32,11 @@ export default class MySider extends React.Component {
       <DataConsumer>
         {({ selectedMenu }) => (
           <Layout className="main-container">
-            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-              <div className="logo" />
+            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>{
+              this.state.collapsed?
+                <div className="logo" >{this.state.sh_logoName}</div>:
+                <div className="logo" >{this.state.bg_logoName}</div>
+              }
               <MyMenu triggerSider={this.triggerSider} />
             </Sider>
 
