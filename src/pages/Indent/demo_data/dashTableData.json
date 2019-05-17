@@ -1,0 +1,36 @@
+
+{
+   "data":[
+       {
+           "key": "1",
+           "name": "Arafat Ahmed",
+           "role": "Store Keeper",
+           "mobile":"+8801924252248",
+           "email":"arafat@gmail.com",
+           "station":"Rampura",
+           "designation": "Jr.",
+           "sign":"image_path",
+           "status":"1"
+       },{ 
+           "key": "2",
+           "name": "Adnan Alam",
+           "role": "Store Keeper",
+           "mobile":"+8801924252249",
+           "email":"adnan@gmail.com",
+           "station":"Rampura",
+           "designation": "Sr.",
+           "sign":"image_path",
+           "status":"0"
+       },{
+           "key": "3",
+           "name": "Admin",
+           "role": "Admin",
+           "mobile":"+8801920000000",
+           "email":"admin@gmail.com",
+           "station":"admin",
+           "designation": "admin",
+           "sign":"image_path",
+           "status":"1"
+       }
+   ]
+}
