@@ -15,7 +15,7 @@ export default function Auth(values) {
         token: res.data.token,
       };
       localStorage.setItem('user', JSON.stringify({ user }));
-      window.location.href = '/';
+      window.location.href = '/users';
     })
     .catch(error => {
       console.log(error);

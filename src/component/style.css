@@ -17,3 +17,11 @@
     background: rgba(255,255,255,.2);
     margin: 16px;
   }
+
+  .active-users{
+    background: rgba(100, 167, 0, 0.2)
+  }
+
+  .inactive-users{
+    background: rgba(167, 25, 0, 0.2)
+  }

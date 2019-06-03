@@ -2,6 +2,11 @@
     "HOST": "http://localhost:4000/",  
     "LOGIN": "users/authenticate",
     "ANALYTICS": "data/analytics",
-    "ALLUSER" : "users/"
+    
+    "ALLUSER" : "users/",
+    "ADDUSER" : "users/register",
+
+    "ALLSTATION" : "stations/",
+    "ADDSTATION" : "stations/register"
 }
   

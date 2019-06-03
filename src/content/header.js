@@ -10,7 +10,7 @@ const signOutUser = props => {
 };
 const MyHeader = () => {
   return (
-    <Header style={{ background: '#fff', padding: 0 }}>
+    <Header style={{ padding: 0 }}>
       <Icon
         className="trigger"
         type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
