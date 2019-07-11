@@ -69,57 +69,37 @@ export default class UserTableWithAction extends React.Component{
     
       AllStationTableCols = [
         {
-            title: "Intent Type",
+            title: "Name",
             dataIndex: "station_id",
             className: "station",
             key: "0",
         },{
-          title: "Product Name",
+          title: "Type",
           dataIndex: "station_id",
           className: "station",
           key: "0",
         },{
-          title: "Consumprion of Last 2yrs",
+          title: "Specification",
           dataIndex: "station_id",
           className: "station",
           key: "0",
         },{
-          title: "Requirement of Next 2 yrs",
+          title: "Model No.",
           dataIndex: "station_id",
           className: "station",
           key: "0",
         },{
-          title: "Parst Position",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
-        }, {
-          title: "Ins/Parts No.",
+          title: "Available",
           dataIndex: "station_id",
           className: "station",
           key: "0",
         },{
-          title: "Quantity in Use ",
+          title: "Threshold Value",
           dataIndex: "station_id",
           className: "station",
           key: "0",
         },{
-          title: "Special Report No.",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
-        },{
-          title: "Intent Year",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
-        },{
-          title: "Remarks",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
-        },{
-          title: "Status",
+          title: "Action(request)",
           dataIndex: "station_id",
           className: "station",
           key: "0",

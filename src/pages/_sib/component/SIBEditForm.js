@@ -41,12 +41,52 @@ class MyForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <input
                         className="form-control"
                         placeholder="Station"
                         type="text"
                         defaultValue={this.props.data.station_id}
+                        onChange={this.handleStationChange}
+                    />
+                </div> */}
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Date Of Received"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Descriptions Of Good"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Requirements of Ledger"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Stock Ledger"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Remarks"
+                        type="text"
                         onChange={this.handleStationChange}
                     />
                 </div>

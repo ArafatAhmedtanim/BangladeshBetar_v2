@@ -76,7 +76,7 @@ export default class UserTableWithAction extends React.Component{
         },
         {
           title: "Address",
-          dataIndex: "station_id",
+          dataIndex: "address",
           className: "station",
           key: "0",
         },{

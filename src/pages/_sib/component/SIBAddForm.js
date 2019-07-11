@@ -46,11 +46,44 @@ class MyForm extends React.Component {
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Station"
+                        placeholder="Date Of Received"
                         type="text"
                         onChange={this.handleStationChange}
                     />
                 </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Descriptions Of Good"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Requirements of Ledger"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Stock Ledger"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Remarks"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+            
                 
                 <button  
                     type="submit" 

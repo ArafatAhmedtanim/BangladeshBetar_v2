@@ -41,12 +41,108 @@ class MyForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <input
                         className="form-control"
                         placeholder="Station"
                         type="text"
                         defaultValue={this.props.data.station_id}
+                        onChange={this.handleStationChange}
+                    />
+                </div> */}
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Product Name"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Product Type"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Specification"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Threshold Value"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Model"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="SR No."
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Symbol No."
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Manufacturer"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Station"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Date Of Installation"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Remarks"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Attachment"
+                        type="text"
                         onChange={this.handleStationChange}
                     />
                 </div>

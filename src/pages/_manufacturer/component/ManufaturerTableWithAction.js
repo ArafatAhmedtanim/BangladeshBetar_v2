@@ -70,8 +70,8 @@ export default class UserTableWithAction extends React.Component{
       AllManufacturerTableCols = [
         {
             title: "Manufacturer",
-            dataIndex: "manufacturer_id",
-            className: "manufacturer",
+            dataIndex: "station_id",
+            className: "station",
             key: "0",
         },{
           title: "Address",

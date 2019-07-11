@@ -50,7 +50,14 @@ class MyForm extends React.Component {
                         onChange={this.handleStationChange}
                     />
                 </div>
-                
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Address"
+                        type="text"
+                        onChange={this.handleStationAddressAdd}
+                    />
+                </div>
                 <button  
                     type="submit" 
                     className="btn btn-primary"

@@ -9,6 +9,7 @@ class MyForm extends React.Component {
 
         this.state={
             station_id: '',
+            address:''
         }
     }
 
@@ -21,6 +22,7 @@ class MyForm extends React.Component {
         Axios
         .post(Api.HOST+Api.ADDSTATION, {
             station_id: this.state.station_id,
+            address: this.state.address
 
         },{
             headers: { Authorization: 'bearer ' + user.user.token },
@@ -39,7 +41,11 @@ class MyForm extends React.Component {
         console.log(this.state.station_id)
         this.setState({station_id: e.target.value})
     }
-    
+    handleStationAddressAdd = e => {
+        console.log(this.state.address)
+        console.log(e.target.value)
+        // this.setState({address: e.target.value})
+    }
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -51,7 +57,14 @@ class MyForm extends React.Component {
                         onChange={this.handleStationChange}
                     />
                 </div>
-                
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Address"
+                        type="text"
+                        onChange={this.handleStationAddressAdd}
+                    />
+                </div>
                 <button  
                     type="submit" 
                     className="btn btn-primary"

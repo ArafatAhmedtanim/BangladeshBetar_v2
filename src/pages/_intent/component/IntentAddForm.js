@@ -46,12 +46,92 @@ class MyForm extends React.Component {
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Station"
+                        placeholder="Intent Type"
                         type="text"
                         onChange={this.handleStationChange}
                     />
                 </div>
-                
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Product Name"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Consumption of Last 2 Years"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Requirements of Next 2 Years"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Parts Postion"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Product No."
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Quantity in Use"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Special Report No."
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Intent Year"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Reamrks"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="Status"
+                        type="text"
+                        onChange={this.handleStationChange}
+                    />
+                </div>
+
                 <button  
                     type="submit" 
                     className="btn btn-primary"
