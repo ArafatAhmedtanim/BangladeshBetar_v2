@@ -164,7 +164,7 @@ export default class UserTableWithAction extends React.Component{
                 />
               }
               handleModalCancel={this.handleUserAddModalCancel}
-              modalTitle="User Update Form"
+              modalTitle="User Add Form"
             />
 
             {this.props.stations.map(station=>{

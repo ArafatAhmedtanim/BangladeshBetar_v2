@@ -8,15 +8,15 @@ const { Content, Sider, Header } = Layout;
 const signOutUser = props => {
   try {
     localStorage.clear();
-    window.location.href = "/";
+    window.location.href = '/';
   } catch (e) {}
 };
 export default class MySider extends React.Component {
   state = {
     collapsed: true,
     selectedMenu: '0',
-    bg_logoName: 'Quickly Global',
-    sh_logoName: 'QG',
+    bg_logoName: 'Bangladesh Betar',
+    sh_logoName: 'BB',
   };
 
   onCollapse = collapsed => this.setState({ collapsed });
@@ -32,11 +32,12 @@ export default class MySider extends React.Component {
       <DataConsumer>
         {({ selectedMenu }) => (
           <Layout className="main-container">
-            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>{
-              this.state.collapsed?
-                <div className="logo" >{this.state.sh_logoName}</div>:
-                <div className="logo" >{this.state.bg_logoName}</div>
-              }
+            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+              {this.state.collapsed ? (
+                <div className="logo">{this.state.sh_logoName}</div>
+              ) : (
+                <div className="logo">{this.state.bg_logoName}</div>
+              )}
               <MyMenu triggerSider={this.triggerSider} />
             </Sider>
 
@@ -47,7 +48,12 @@ export default class MySider extends React.Component {
                   type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                   onClick={this.toggle}
                 />
-                <Button shape="circle" icon="logout" className="header-logout-button" onClick={signOutUser}/>
+                <Button
+                  shape="circle"
+                  icon="logout"
+                  className="header-logout-button"
+                  onClick={signOutUser}
+                />
               </Header>
               <Content style={{ padding: '30px', hegiht: '100vh' }}>
                 {getSelectedContent(selectedMenu)}

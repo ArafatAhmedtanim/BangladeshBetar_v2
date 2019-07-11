@@ -10,6 +10,8 @@ class DataProvider extends React.Component {
     this.state = {
       users:[],
       stations:[],
+      manufacturers:[],
+
       update: this.update.bind(this)
     };
   }

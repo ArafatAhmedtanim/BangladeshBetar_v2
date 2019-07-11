@@ -73,6 +73,12 @@ export default class UserTableWithAction extends React.Component{
             dataIndex: "station_id",
             className: "station",
             key: "0",
+        },
+        {
+          title: "Address",
+          dataIndex: "station_id",
+          className: "station",
+          key: "0",
         },{
             title: 'Action',
             key: 'operation',
@@ -103,7 +109,7 @@ export default class UserTableWithAction extends React.Component{
                     className="btn btn-success"
                     onClick = { () => this.setState({stationAddModalVisibility: true}) }
                 >
-                    Add New User
+                    Add New Station
                 </button>
             </div>
             <br/>
@@ -117,7 +123,7 @@ export default class UserTableWithAction extends React.Component{
                 />
               }
               handleModalCancel={this.handleStationAddModalCancel}
-              modalTitle="User Update Form"
+              modalTitle="User Add Form"
             />
 
             <StationTable 
