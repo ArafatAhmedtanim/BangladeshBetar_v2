@@ -11,7 +11,7 @@ export default class UserTableWithAction extends React.Component{
         super(props)
     
         this.state={
-          stations : [],
+          products : [],
           editingRow: '',
           stationAddModalVisibility: false,
           stationEditModalVisibility: false,
@@ -21,13 +21,13 @@ export default class UserTableWithAction extends React.Component{
         const user = JSON.parse(localStorage.getItem('user'));
     
         Axios
-        .get(Api.HOST+Api.ALLSTATION, {
+        .get(Api.HOST+Api.ALLPRODUCT, {
           headers: { Authorization: 'bearer ' + user.user.token }
         })
         .then(res => {
           console.log(res.data)
           this.setState({stations: res.data})
-          this.props.update('stations', res.data)
+          this.props.update('products', res.data)
         })
         .catch(error => {});
       }
@@ -44,12 +44,12 @@ export default class UserTableWithAction extends React.Component{
         const user = JSON.parse(localStorage.getItem('user'));
 
         Axios
-        .delete(Api.HOST+Api.ALLSTATION+record.id, 
+        .delete(Api.HOST+Api.ALLPRODUCT+record.id, 
           {headers: { Authorization: 'bearer ' + user.user.token },    
         })
         .then(res => {
             console.log(res)
-            this.props.update('stations', res.data)
+            this.props.update('products', res.data)
         })
         .catch(error => {});
           
@@ -70,60 +70,55 @@ export default class UserTableWithAction extends React.Component{
       AllStationTableCols = [
         {
             title: "Name",
-            dataIndex: "station_id",
-            className: "station",
+            dataIndex: "name",
+            className: "name",
             key: "0",
         },{
-          title: "Product Type",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
+          title: "Type Name",
+          dataIndex: "type_name",
+          className: "type_name",
+          key: "1",
         },{
           title: "Specification",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
-        },{
-          title: "Threshold",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
+          dataIndex: "spacification",
+          className: "spacification",
+          key: "2",
         },{
           title: "Model",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
+          dataIndex: "model",
+          className: "model",
+          key: "3",
         },{
-          title: "SR No.",
-          dataIndex: "station_id",
-          className: "station",
-          key: "0",
+          title: "SR No",
+          dataIndex: "sr_no",
+          className: "sr_no",
+          key: "4",
         },{
-          title: "Symbol_no",
+          title: "Symbol No",
           dataIndex: "symbol_no",
           className: "symbol_no",
-          key: "0",
-        },{
-          title: "Manufacturer",
-          dataIndex: "manufacturer",
-          className: "manufacturer",
-          key: "0",
+          key: "5",
         },{
           title: "Date of Installation",
-          dataIndex: "date_of_installation",
-          className: "date_of_installation",
-          key: "0",
+          dataIndex: "date_installation",
+          className: "date_installation",
+          key: "6",
+        },{
+          title: "Threshold",
+          dataIndex: "threshold",
+          className: "threshold",
+          key: "7",
         },{
           title: "Remarks",
           dataIndex: "remarks",
           className: "remarks",
-          key: "0",
+          key: "8",
         },
         {
           title: "Attachments",
           dataIndex: "attachments",
           className: "attachments",
-          key: "0",
+          key: "9",
       },{
             title: 'Action',
             key: 'operation',
@@ -173,7 +168,7 @@ export default class UserTableWithAction extends React.Component{
 
             <StationTable 
               columns={this.AllStationTableCols} 
-              data={this.props.stations} 
+              data={this.props.products} 
             />
   
             <ProductModal 
