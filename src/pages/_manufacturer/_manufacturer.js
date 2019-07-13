@@ -6,11 +6,11 @@ export default class Home extends React.Component {
   
   render() { 
     return (
-      <DataConsumer>{({update, manufacturers}) =>
+      <DataConsumer>{({update, stations}) =>
         <div>
           <ManufaturerTableWithAction 
             update={update} 
-            manufacturer={manufacturers}
+            manufacturer={stations}
           />
         </div>
       }</DataConsumer>

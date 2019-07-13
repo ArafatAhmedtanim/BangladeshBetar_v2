@@ -27,7 +27,7 @@ export default class UserTableWithAction extends React.Component{
         .then(res => {
           console.log(res.data)
           this.setState({manufacturer: res.data})
-          this.props.update('manufacturer', res.data)
+          this.props.update('stations', res.data)
         })
         .catch(error => {});
       }
