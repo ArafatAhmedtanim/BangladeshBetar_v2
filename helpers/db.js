@@ -9,5 +9,7 @@ mongoose.Promise = global.Promise;
 module.exports = {
   User: require('../users/user.model'),
   Analytics: require('../analytics/analytics.model'),
-  Station: require('../stations/station.modal')
+  Station: require('../stations/station.modal'),
+  Manufacturer: require('../manufacturer/manufacturer.modal'),
+  Product: require('../product/product.modal')
 };

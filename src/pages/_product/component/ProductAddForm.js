@@ -8,7 +8,18 @@ class MyForm extends React.Component {
         super(props)
 
         this.state={
-            station_id: '',
+            name : '',
+            type_name : '',
+            specification : '',
+            model : '',
+            sr_no : '',
+            symbol_no : '',
+            manufacturer : '',
+            date_installation : '',
+            threshold : '',
+            remarks : '',
+            attachment : '',
+            ip : ''
         }
     }
 
@@ -19,26 +30,42 @@ class MyForm extends React.Component {
         const user = JSON.parse(localStorage.getItem('user'));
     
         Axios
-        .post(Api.HOST+Api.ADDSTATION, {
-            station_id: this.state.station_id,
-
+        .post(Api.HOST+Api.ADDPRODUCT, {
+            name : this.state.name,
+            type_name : this.state.type_name,
+            specification : this.state.specification,
+            model : this.state.model,
+            sr_no : this.state.sr_no,
+            symbol_no : this.state.symbol_no,
+            date_installation : this.state.date_installation,
+            threshold : this.state.threshold,
+            remarks : this.state.remarks,
+            attachment : this.state.attachment,
+            ip : this.state.ip
         },{
             headers: { Authorization: 'bearer ' + user.user.token },
             
         })
         .then(res => {
             console.log(res)
-            this.props.update('stations', res.data)
+            this.props.update('products', res.data)
             this.props.handleModalCancel()
         })
         .catch(error => {});
           
     };
 
-    handleStationChange = e => {
-        console.log(this.state.station_id)
-        this.setState({station_id: e.target.value})
-    }
+    handleNameChange = e => this.setState({name: e.target.value})
+    handleTypeNameChange = e => this.setState({type_name: e.target.value})
+    handleSpecificationChange = e => this.setState({specification: e.target.value})
+    handleModelChange = e => this.setState({model: e.target.value})
+    handleSRNoChange = e => this.setState({sr_no: e.target.value})
+    handleSymbolNoChange = e => this.setState({symbol_no: e.target.value})
+    handleDateInstallationChange = e => this.setState({date_installation: e.target.value})
+    handleThresholdChange = e => this.setState({threshold: e.target.value})
+    handleRemarksChange = e => this.setState({remarks: e.target.value})
+    handleAttachmentChange = e => this.setState({attachment: e.target.value})
+    handleIPChange = e => this.setState({ip: e.target.value})
     
     render() {
         return (
@@ -46,17 +73,17 @@ class MyForm extends React.Component {
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Product Name"
+                        placeholder="Name"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleNameChange}
                     />
                 </div>
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Product Type"
+                        placeholder="Type Name"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleTypeNameChange}
                     />
                 </div>
                 <div className="form-group">
@@ -64,15 +91,7 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Specification"
                         type="text"
-                        onChange={this.handleStationChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Threshold Value"
-                        type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleSpecificationChange}
                     />
                 </div>
                 <div className="form-group">
@@ -80,7 +99,7 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Model"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleModelChange}
                     />
                 </div>
                 <div className="form-group">
@@ -88,7 +107,7 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="SR No."
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleSRNoChange}
                     />
                 </div>
                 <div className="form-group">
@@ -96,31 +115,23 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Symbol No."
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleSymbolNoChange}
                     />
                 </div>
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Manufacturer"
+                        placeholder="Date of Installation"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleDateInstallationChange}
                     />
                 </div>
                 <div className="form-group">
                     <input
                         className="form-control"
-                        placeholder="Station"
+                        placeholder="Threshold"
                         type="text"
-                        onChange={this.handleStationChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Date Of Installation"
-                        type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleThresholdChange}
                     />
                 </div>
                 <div className="form-group">
@@ -128,7 +139,7 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Remarks"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleRemarksChange}
                     />
                 </div>
                 <div className="form-group">
@@ -136,7 +147,15 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Attachment"
                         type="text"
-                        onChange={this.handleStationChange}
+                        onChange={this.handleAttachmentChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        placeholder="IP"
+                        type="text"
+                        onChange={this.handleIPChange}
                     />
                 </div>
                 

@@ -11,7 +11,7 @@ class DataProvider extends React.Component {
       users:[],
       stations:[],
       manufacturers:[],
-
+      products:[],
       update: this.update.bind(this)
     };
   }

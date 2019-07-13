@@ -8,7 +8,9 @@ class MyForm extends React.Component {
         super(props)
 
         this.state={
-            station_id: this.props.data.station_id,
+            name: this.props.data.name,
+            address: this.props.data.address,
+            country: this.props.data.country
         }
     }
 
@@ -19,24 +21,25 @@ class MyForm extends React.Component {
         const user = JSON.parse(localStorage.getItem('user'));
     
         Axios
-        .put(Api.HOST+Api.ALLSTATION+this.props.data.id, {
-            station_id: this.state.station_id,
+        .put(Api.HOST+Api.ALLMANUFACTURER+this.props.data.id, {
+            name: this.state.name,
+            address: this.state.address,
+            country: this.state.country
         },{
             headers: { Authorization: 'bearer ' + user.user.token },
         })
         .then(res => {
             console.log(res)
-            this.props.update('stations', res.data)
+            this.props.update('manufacturers', res.data)
             this.props.handleModalCancel()
         })
         .catch(error => {});
-          
     };
 
-    handleStationChange = e => {
-        console.log(this.state.station_id)
-        this.setState({station_id: e.target.value})
-    }
+    handleManufacturerChange = e => this.setState({name: e.target.value})
+    handleAddressChange = e => this.setState({address: e.target.value})
+    handleCountryChange = e => this.setState({country: e.target.value})
+    
     
     render() {
         return (
@@ -46,8 +49,8 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Manufacturer"
                         type="text"
-                        defaultValue={this.props.data.station_id}
-                        onChange={this.handleStationChange}
+                        defaultValue={this.props.data.name}
+                        onChange={this.handleManufacturerChange}
                     />
                 </div>
                 <div className="form-group">
@@ -55,16 +58,16 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Address"
                         type="text"
-                        defaultValue={this.props.data.station_id}
-                        onChange={this.handleStationChange}
+                        defaultValue={this.props.data.address}
+                        onChange={this.handleAddressChange}
                     />
                 </div><div className="form-group">
                     <input
                         className="form-control"
                         placeholder="Country"
                         type="text"
-                        defaultValue={this.props.data.station_id}
-                        onChange={this.handleStationChange}
+                        defaultValue={this.props.data.country}
+                        onChange={this.handleCountryChange}
                     />
                 </div>
                 <button  

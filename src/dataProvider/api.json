@@ -7,6 +7,12 @@
     "ADDUSER" : "users/register",
 
     "ALLSTATION" : "stations/",
-    "ADDSTATION" : "stations/register"
+    "ADDSTATION" : "stations/register",
+
+    "ALLMANUFACTURER" : "manufacturer/",
+    "ADDMANUFACTURER" : "manufacturer/register",
+
+    "ALLPRODUCT" : "product/",
+    "ADDPRODUCT" : "product/register"
 }
   

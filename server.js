@@ -16,6 +16,8 @@ app.use(jwt());
 app.use('/users', require('./users/user.controller'));
 app.use('/data', require('./analytics/analytics.controller'));
 app.use('/stations', require('./stations/station.controller'));
+app.use('/manufacturer', require('./manufacturer/manufacturer.controller'));
+app.use('/product', require('./product/product.controller'));
 
 // global error handler
 app.use(errorHandler);

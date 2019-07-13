@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Dashboard from './../pages/Dashboard/dashboard';
-import Manufacturer from './../pages/Manufacturer/manufacturer';
+import Manufacturer from './../pages/_manufacturer/_manufacturer';
 import Station from './../pages/Station/station';
 import Product from './../pages/Product/product';
 import Fault from './../pages/Fault/fault';

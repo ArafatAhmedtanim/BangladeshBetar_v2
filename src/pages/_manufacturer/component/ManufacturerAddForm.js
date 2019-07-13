@@ -8,7 +8,7 @@ class MyForm extends React.Component {
         super(props)
 
         this.state={
-            manufacturer_id: '',
+            name: '',
             address:'',
             country: '',
         }
@@ -21,15 +21,14 @@ class MyForm extends React.Component {
         const user = JSON.parse(localStorage.getItem('user'));
     
         Axios
-        .post(Api.HOST+Api.ADDSTATION, {
-            manufacturer_id: this.state.manufacturer_id,
-
+        .post(Api.HOST+Api.ADDMANUFACTURER, {
+            name: this.state.name,
+            address: this.state.address,
+            country: this.state.country
         },{
             headers: { Authorization: 'bearer ' + user.user.token },
-            
         })
         .then(res => {
-            console.log(res)
             this.props.update('manufacturers', res.data)
             this.props.handleModalCancel()
         })
@@ -38,10 +37,16 @@ class MyForm extends React.Component {
     };
 
     handleManufacturerChange = e => {
-        console.log(this.state.manufacturer_id)
-        this.setState({manufacturer_id: e.target.value})
+        this.setState({name: e.target.value})
     }
-    
+
+    handleManufacturerAddressAdd = e => {
+        this.setState({address: e.target.value})
+    }
+
+    handleManufacturerCountryAdd = e => {
+        this.setState({country: e.target.value})
+    }
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -53,12 +58,12 @@ class MyForm extends React.Component {
                         onChange={this.handleManufacturerChange}
                     />
                 </div>
-                <div className="form-group">
-                    <input
+              <div className="form-group">
+                <input
                         className="form-control"
                         placeholder="Address"
                         type="text"
-                        onChange={this.handleManufacturerChange}
+                        onChange={this.handleManufacturerAddressAdd}
                     />
                 </div>
                 <div className="form-group">
@@ -66,7 +71,7 @@ class MyForm extends React.Component {
                         className="form-control"
                         placeholder="Country"
                         type="text"
-                        onChange={this.handleManufacturerChange}
+                        onChange={this.handleManufacturerCountryAdd}
                     />
                 </div>
                 

@@ -21,13 +21,13 @@ export default class UserTableWithAction extends React.Component{
         const user = JSON.parse(localStorage.getItem('user'));
     
         Axios
-        .get(Api.HOST+Api.ALLSTATION, {
+        .get(Api.HOST+Api.ALLMANUFACTURER, {
           headers: { Authorization: 'bearer ' + user.user.token }
         })
         .then(res => {
           console.log(res.data)
           this.setState({manufacturer: res.data})
-          this.props.update('manufacturer', res.data)
+          this.props.update('manufacturers', res.data)
         })
         .catch(error => {});
       }
@@ -44,7 +44,7 @@ export default class UserTableWithAction extends React.Component{
         const user = JSON.parse(localStorage.getItem('user'));
 
         Axios
-        .delete(Api.HOST+Api.ALLSTATION+record.id, 
+        .delete(Api.HOST+Api.ALLMANUFACTURER+record.id, 
           {headers: { Authorization: 'bearer ' + user.user.token },    
         })
         .then(res => {
@@ -70,8 +70,8 @@ export default class UserTableWithAction extends React.Component{
       AllManufacturerTableCols = [
         {
             title: "Manufacturer",
-            dataIndex: "station_id",
-            className: "station",
+            dataIndex: "name",
+            className: "name",
             key: "0",
         },{
           title: "Address",
