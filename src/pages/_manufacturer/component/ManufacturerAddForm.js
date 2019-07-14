@@ -1,99 +1,87 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
-import { Select } from 'antd'
-
-const { Option } = Select;
+import { Form, Input, Button, Select } from 'antd';
 
 class MyForm extends React.Component {
-    
-    constructor(props){
-        super(props)
-
-        this.state={
-            name: '',
-            address:'',
-            country: '',
-        }
-    }
-
     handleSubmit = e => {
         e.preventDefault();
-        console.log(e.target)
-        const data = new FormData(e.target);
-        const user = JSON.parse(localStorage.getItem('user'));
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                const user = JSON.parse(localStorage.getItem('user'));
     
-        Axios
-        .post(Api.HOST+Api.ADDMANUFACTURER, {
-            name: this.state.name,
-            address: this.state.address,
-            country: this.state.country
-        },{
-            headers: { Authorization: 'bearer ' + user.user.token },
-        })
-        .then(res => {
-            this.props.update('manufacturers', res.data)
-            this.props.handleModalCancel()
-        })
-        .catch(error => {});
-          
+                Axios
+                .post(Api.HOST+Api.ADDMANUFACTURER, {
+                    name: values.name,
+                    address: values.address,
+                    country: values.country
+                },{
+                    headers: { Authorization: 'bearer ' + user.user.token },
+                })
+                .then(res => {
+                    this.props.update('manufacturers', res.data)
+                    this.props.handleModalCancel()
+                })
+                .catch(error => {});
+            }
+        });
     };
 
-    handleManufacturerChange = e => {
-        this.setState({name: e.target.value})
-    }
 
-    handleManufacturerAddressAdd = e => {
-        this.setState({address: e.target.value})
-    }
-
-    handleManufacturerCountryAdd = value => {
-        console.log(value)
-        this.setState({country: value})
-    }
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Manufacturer"
-                        type="text"
-                        onChange={this.handleManufacturerChange}
-                    />
-                </div>
-              <div className="form-group">
-                <input
-                        className="form-control"
-                        placeholder="Address"
-                        type="text"
-                        onChange={this.handleManufacturerAddressAdd}
-                    />
-                </div>
-                <div className="form-group">
-                <Select
-                        placeholder="Select Country"
-                        onChange={this.handleManufacturerCountryAdd}
-                    >
-                        <Option value="Bangladesh">Bangladesh</Option>
-                        <Option value="India">India </Option>
-                        <Option value="Pakistan">Pakistan</Option>
-                        <Option value="Itally">Itally</Option>
-                        <Option value="Germany">Germany</Option>
-                        <Option value="USA">USA</Option>
-                        <Option value="Switzerland">Switzerland</Option>
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Item>{
+                getFieldDecorator('name', {
+                    rules: [
+                        {
+                            required: true,
+                            message: 'Please input manufacturer name!',
+                        },
+                    ],
+                })(<Input placeholder="Manufacturer Name"/>)}
+            </Form.Item>
+
+            <Form.Item>
+                {getFieldDecorator('country', {
+                    rules: [{ 
+                         required: true, 
+                         message: 'Please select manufacturer country!' },
+                    ],
+                })(
+                    <Select placeholder="Manufacturer Country">
+                        <Select.Option value="Bangladesh">Bangladesh</Select.Option>
+                        <Select.Option value="India">India </Select.Option>
+                        <Select.Option value="Pakistan">Pakistan</Select.Option>
+                        <Select.Option value="Itally">Itally</Select.Option>
+                        <Select.Option value="Germany">Germany</Select.Option>
+                        <Select.Option value="USA">USA</Select.Option>
+                        <Select.Option value="Switzerland">Switzerland</Select.Option>
                     </Select>
-                </div>
-                
-                <button  
-                    type="submit" 
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
-            </form>
+                )}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator('address', {
+                rules: [{ required: true, message: 'Please input manufacturer address!' }],
+              })(
+                <Input
+                  placeholder="Manufacturer Address"
+                />,
+              )}
+            </Form.Item>
+            
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+     
         );
     }
 }
 
-export default MyForm;
+const WrappedMyForm = Form.create({ name: 'my_form' })(MyForm);
+export default WrappedMyForm;

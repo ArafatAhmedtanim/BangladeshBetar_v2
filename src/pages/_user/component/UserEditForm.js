@@ -1,173 +1,160 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
+import { Form, Input, Button, Select } from 'antd';
 
 class MyForm extends React.Component {
-    
-    constructor(props){
-        super(props)
-
-        this.state={
-            email: this.props.data.email,
-            username: this.props.data.username,
-            designation: this.props.data.designation,
-            role: this.props.data.role,
-            mobile: this.props.data.mobile,
-            station_id: this.props.data.station_id,
-            signature: this.props.data.signature,
-            status: this.props.data.status
-        }
-    }
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(e.target)
-        const data = new FormData(e.target);
-        const user = JSON.parse(localStorage.getItem('user'));
-    
-        Axios
-        .put(Api.HOST+Api.ALLUSER+this.props.data.id, {
-            email: this.state.email,
-            username: this.state.username,
-            designation: this.state.designation,
-            role: this.state.role,
-            mobile: this.state.mobile,
-            station_id: this.state.station_id,
-            signature: this.state.signature,
-            status: this.state.status
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                const user = JSON.parse(localStorage.getItem('user'));
+                Axios
+                .put(Api.HOST+Api.ALLUSER+this.props.data.id, {
+                    email: values.email,
+                    username: values.username,
+                    designation: values.designation,
+                    role: values.role,
+                    mobile: values.mobile,
+                    station_id: values.station_id,
+                    signature: values.signature,
+                    status: values.status
 
-        },{
-            headers: { Authorization: 'bearer ' + user.user.token },
-            
-        })
-        .then(res => {
-            console.log(res)
-            this.props.update('users', res.data)
-            this.props.handleModalCancel()
-        })
-        .catch(error => {});
-          
+                },{
+                    headers: { Authorization: 'bearer ' + user.user.token },
+                    
+                })
+                .then(res => {
+                    console.log(res)
+                    this.props.update('users', res.data)
+                    this.props.handleModalCancel()
+                })
+                .catch(error => {});
+            }
+        });
     };
 
-    handleEmailChange = e => {
-        console.log(this.state.email)
-        this.setState({email: e.target.value})
-    }
-    handleDesignationChange = e => {
-        console.log(this.state.designation)
-        this.setState({designation: e.target.value})
-    }
-    handleRoleChange = e => {
-        console.log(this.state.role)
-        this.setState({role: e.target.value})
-    }
-    handleMobileChange = e => {
-        console.log(this.state.mobile)
-        this.setState({mobile: e.target.value})
-    }
-    handleStationChange = e => {
-        console.log(this.state.station_id)
-        this.setState({station_id: e.target.value})
-    }
-    handleUserNameChange = e => {
-        console.log(this.state.username)
-        this.setState({username: e.target.value})
-    }
-    handleSignatureChange = e => {
-        console.log(this.state.signature)
-        this.setState({signature: e.target.value})
-    }
-
-    handleStatusChange = e => {
-        console.log(this.state.status)
-        this.setState({status: e.target.value})
-    }
 
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Email Address"
-                        type="email"
-                        defaultValue={this.props.data.email}
-                        onChange={this.handleEmailChange}
-                    />
-                </div>
-                <div className="form-group">  
-                    <input 
-                        className="form-control"
-                        placeholder="User Name"
-                        type="text"
-                        defaultValue={this.props.data.username}
-                        onChange={this.handleUserNameChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <input 
-                        className="form-control"
-                        placeholder="Designation"
-                        type="text"
-                        defaultValue={this.props.data.designation}
-                        onChange={this.handleDesignationChange}    
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control" 
-                        placeholder="Role" 
-                        type="text"
-                        defaultValue={this.props.data.role} 
-                        onChange={this.handleRoleChange}   
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control" 
-                        placeholder="Mobile" 
-                        type="text"
-                        defaultValue={this.props.data.mobile}
-                        onChange={this.handleMobileChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <select
-                        className="custom-select mr-sm-2" 
-                        id="inlineFormCustomSelect"
-                        onChange={this.handleStationChange} 
-                    >
-                        <option selected>Choose...</option>
-                        {this.props.stations.map(station=><option value={station._id}>{station.station_id}</option>)}
-                    </select>
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control" 
-                        placeholder="Signature"
-                        type="text"
-                        defaultValue={this.props.data.signature}
-                        onChange={this.handleSignatureChange}    
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control" 
-                        placeholder="Status"
-                        type="text"
-                        defaultValue={this.props.data.status}
-                        onChange={this.handleStatusChange}    
-                    />
-                </div>
-                <button  
-                    type="submit" 
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Item>{
+                getFieldDecorator('email', {
+                    initialValue: this.props.data.email,
+                    rules: [
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input E-mail!',
+                        },
+                    ],
+                })(<Input placeholder="Email"/>)}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator('username', {
+                initialValue: this.props.data.username,
+                rules: [{ required: true, message: 'Please input user name!' }],
+              })(
+                <Input
+                  placeholder="User Name"
+                />,
+              )}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator('role', {
+                initialValue: this.props.data.role,  
+                rules: [{ required: true, message: 'Please input user role!' }],
+              })(
+                <Input
+                  placeholder="User Role"
+                />,
+              )}
+            </Form.Item>
+            
+            <Form.Item>
+              {getFieldDecorator('designation', {
+                initialValue: this.props.data.designation,  
+                rules: [{ required: true, message: 'Please input user designation!' }],
+              })(
+                <Input
+                  placeholder="User Designation"
+                />,
+              )}
+            </Form.Item>
+
+            <Form.Item>
+                {getFieldDecorator('mobile', {
+                    initialValue: this.props.data.mobile,
+                    rules: [{ required: true, message: 'Please input user phone number!' }],
+                })(
+                <Input 
+                    addonBefore={'+88'}
+                    placeholder="User Phone Number"  
+                />)}
+            </Form.Item>
+
+            <Form.Item>
+                {getFieldDecorator('station_id', {
+                    initialValue: this.props.data.station_id,
+                    rules: [{ 
+                         required: true, 
+                         message: 'Please select user station!' },
+                    ],
+                })(
+                    <Select placeholder="Station">{
+                        this.props.stations.length>0?
+                            this.props.stations.map(station=>
+                                <Select.Option value={station._id}>
+                                    {station.station_id}
+                                </Select.Option>):
+                            <Select.Option disabled>Please Create Station</Select.Option>}
+                    </Select>
+                )}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator('signature', {
+                initialValue: this.props.data.signature,
+                rules: [{ required: true, message: 'Please input user signature!' }],
+              })(
+                <Input
+                  placeholder="User Signature"
+                />,
+              )}
+            </Form.Item>
+
+            <Form.Item>
+                {getFieldDecorator('status', {
+                    initialValue: this.props.data.status,
+                    rules: [{ 
+                         required: true, 
+                         message: 'Please select user status!' },
+                    ],
+                })(
+                    <Select placeholder="User Status">
+                        <Select.Option value="1">Active</Select.Option>
+                        <Select.Option value="0">Inctive</Select.Option>
+                    </Select>
+                )}
+            </Form.Item>
+
+            
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
         );
     }
 }
 
-export default MyForm;
+const WrappedMyForm = Form.create({ name: 'my_form' })(MyForm);
+export default WrappedMyForm;

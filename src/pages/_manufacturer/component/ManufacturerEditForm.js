@@ -1,100 +1,91 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
-import {Select} from 'antd'
-
-const {Option } = Select;
+import { Form, Input, Button, Select } from 'antd';
 
 class MyForm extends React.Component {
-    
-    constructor(props){
-        super(props)
-
-        this.state={
-            name: this.props.data.name,
-            address: this.props.data.address,
-            country: this.props.data.country
-        }
-    }
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(e.target)
-        const data = new FormData(e.target);
-        const user = JSON.parse(localStorage.getItem('user'));
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                const user = JSON.parse(localStorage.getItem('user'));
     
-        Axios
-        .put(Api.HOST+Api.ALLMANUFACTURER+this.props.data.id, {
-            name: this.state.name,
-            address: this.state.address,
-            country: this.state.country
-        },{
-            headers: { Authorization: 'bearer ' + user.user.token },
-        })
-        .then(res => {
-            console.log(res)
-            this.props.update('manufacturers', res.data)
-            this.props.handleModalCancel()
-        })
-        .catch(error => {});
+                Axios
+                    .put(Api.HOST+Api.ALLMANUFACTURER+this.props.data.id, {
+                        name: values.name,
+                        address: values.address,
+                        country: values.country
+                    },{
+                        headers: { Authorization: 'bearer ' + user.user.token },
+                    })
+                    .then(res => {
+                        console.log(res)
+                        this.props.update('manufacturers', res.data)
+                        this.props.handleModalCancel()
+                    })
+                    .catch(error => {});
+            }
+        });
     };
 
-    handleManufacturerChange = e => this.setState({name: e.target.value})
-    handleAddressChange = e => this.setState({address: e.target.value})
-    handleCountryChange = e => this.setState({country: e})
-    
     
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Manufacturer"
-                        type="text"
-                        defaultValue={this.props.data.name}
-                        onChange={this.handleManufacturerChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Address"
-                        type="text"
-                        defaultValue={this.props.data.address}
-                        onChange={this.handleAddressChange}
-                    />
-                </div><div className="form-group">
-                <Select
-                        placeholder="Select Country"
-                        defaultValue={this.props.data.country}
-                        onChange={this.handleCountryChange}
-                    >
-                        <Option value="Bangladesh">Bangladesh</Option>
-                        <Option value="India">India </Option>
-                        <Option value="Pakistan">Pakistan</Option>
-                        <Option value="Itally">Itally</Option>
-                        <Option value="Germany">Germany</Option>
-                        <Option value="USA">USA</Option>
-                        <Option value="Switzerland">Switzerland</Option>
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Item>{
+                getFieldDecorator('name', {
+                    initialValue: this.props.data.name,
+                    rules: [
+                        {
+                            required: true,
+                            message: 'Please input manufacturer name!',
+                        },
+                    ],
+                })(<Input placeholder="Manufacturer Name"/>)}
+            </Form.Item>
+
+            <Form.Item>
+                {getFieldDecorator('country', {
+                    initialValue: this.props.data.country,
+                    rules: [{ 
+                         required: true, 
+                         message: 'Please select manufacturer country!' },
+                    ],
+                })(
+                    <Select placeholder="Manufacturer Country">
+                        <Select.Option value="Bangladesh">Bangladesh</Select.Option>
+                        <Select.Option value="India">India </Select.Option>
+                        <Select.Option value="Pakistan">Pakistan</Select.Option>
+                        <Select.Option value="Itally">Itally</Select.Option>
+                        <Select.Option value="Germany">Germany</Select.Option>
+                        <Select.Option value="USA">USA</Select.Option>
+                        <Select.Option value="Switzerland">Switzerland</Select.Option>
                     </Select>
-                    {/* <input
-                        className="form-control"
-                        placeholder="Country"
-                        type="text"
-                        defaultValue={this.props.data.country}
-                        onChange={this.handleCountryChange}
-                    /> */}
-                </div>
-                <button  
-                    type="submit" 
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
-            </form>
+                )}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator('address', {
+                 initialValue: this.props.data.address, 
+                rules: [{ required: true, message: 'Please input manufacturer address!' }],
+              })(
+                <Input
+                  placeholder="Manufacturer Address"
+                />,
+              )}
+            </Form.Item>
+            
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
         );
     }
 }
 
-export default MyForm;
+const WrappedMyForm = Form.create({ name: 'my_form' })(MyForm);
+export default WrappedMyForm;
