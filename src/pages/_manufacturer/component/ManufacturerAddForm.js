@@ -1,6 +1,9 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
+import { Select } from 'antd'
+
+const { Option } = Select;
 
 class MyForm extends React.Component {
     
@@ -44,8 +47,9 @@ class MyForm extends React.Component {
         this.setState({address: e.target.value})
     }
 
-    handleManufacturerCountryAdd = e => {
-        this.setState({country: e.target.value})
+    handleManufacturerCountryAdd = value => {
+        console.log(value)
+        this.setState({country: value})
     }
     render() {
         return (
@@ -67,12 +71,18 @@ class MyForm extends React.Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Country"
-                        type="text"
+                <Select
+                        placeholder="Select Country"
                         onChange={this.handleManufacturerCountryAdd}
-                    />
+                    >
+                        <Option value="Bangladesh">Bangladesh</Option>
+                        <Option value="India">India </Option>
+                        <Option value="Pakistan">Pakistan</Option>
+                        <Option value="Itally">Itally</Option>
+                        <Option value="Germany">Germany</Option>
+                        <Option value="USA">USA</Option>
+                        <Option value="Switzerland">Switzerland</Option>
+                    </Select>
                 </div>
                 
                 <button  

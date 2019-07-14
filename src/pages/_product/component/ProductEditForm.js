@@ -1,6 +1,12 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
+import {Select, DatePicker, Input } from 'antd'
+import moment from 'moment';
+ 
+const {Option } = Select;
+const dateFormat = 'YYYY/MM/DD';
+const { TextArea } = Input;
 
 class MyForm extends React.Component {
     
@@ -59,7 +65,9 @@ class MyForm extends React.Component {
     handleModelChange = e => this.setState({model: e.target.value})
     handleSRNoChange = e => this.setState({sr_no: e.target.value})
     handleSymbolNoChange = e => this.setState({symbol_no: e.target.value})
-    handleDateInstallationChange = e => this.setState({date_installation: e.target.value})
+    handleDateInstallationChange = (date, dateString) => {
+        this.setState({date_installation: dateString})
+    }
     handleThresholdChange = e => this.setState({threshold: e.target.value})
     handleRemarksChange = e => this.setState({remarks: e.target.value})
     handleAttachmentChange = e => this.setState({attachment: e.target.value})
@@ -78,13 +86,15 @@ class MyForm extends React.Component {
                 />
             </div>
             <div className="form-group">
-                <input
+                <Select
                     className="form-control"
-                    placeholder="Type Name"
-                    type="text"
+                    placeholder="Select Product"
+                    onChange={this.handleTypeNameChange}
                     defaultValue={this.props.data.type_name}
-                    onChange={this.handleTypeName}
-                />
+                >
+                    <Option value="Instrument">Instrument</Option>
+                    <Option value="Parts">Parts</Option>
+                </Select>
             </div>
             <div className="form-group">
                 <input
@@ -123,11 +133,8 @@ class MyForm extends React.Component {
                 />
             </div>
             <div className="form-group">
-                <input
-                    className="form-control"
-                    placeholder="Date of Installation"
-                    type="text"
-                    defaultValue={this.props.data.date_installation}
+                <DatePicker 
+                    defaultValue={moment(this.props.data.date_installation, dateFormat)}
                     onChange={this.handleDateInstallationChange}
                 />
             </div>
@@ -141,13 +148,14 @@ class MyForm extends React.Component {
                 />
             </div>
             <div className="form-group">
-                <input
-                    className="form-control"
-                    placeholder="Remarks"
-                    type="text"
-                    defaultValue={this.props.data.remarks}
-                    onChange={this.handleRemarksChange}
-                />
+                 <TextArea 
+                        className="form-control"
+                        placeholder="Remarks"
+                        type="text"
+                        defaultValue={this.props.data.remarks}
+                        onChange={this.handleRemarksChange}
+                        rows={4} 
+                    />
             </div>
             <div className="form-group">
                 <input
@@ -172,7 +180,7 @@ class MyForm extends React.Component {
                 type="submit" 
                 className="btn btn-primary"
             >
-                Submit
+                Update
             </button>
         </form>
         );

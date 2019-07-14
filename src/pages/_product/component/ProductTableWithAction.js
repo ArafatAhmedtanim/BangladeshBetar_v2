@@ -163,7 +163,7 @@ export default class UserTableWithAction extends React.Component{
                 />
               }
               handleModalCancel={this.handleStationAddModalCancel}
-              modalTitle="User Update Form"
+              modalTitle="Product Add Form"
             />
 
             <StationTable 
@@ -181,7 +181,7 @@ export default class UserTableWithAction extends React.Component{
                 />
               }
               handleModalCancel={this.handleStationEditModalCancel}
-              modalTitle="User Update Form"
+              modalTitle="Product Update Form"
             />
           </React.Fragment>
         )

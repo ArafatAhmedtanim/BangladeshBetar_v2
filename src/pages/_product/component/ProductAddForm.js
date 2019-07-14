@@ -1,6 +1,13 @@
 import React from 'react'
 import Axios from 'axios'
 import Api from './../../../dataProvider/api.json'
+import { Select, DatePicker, Input } from 'antd';
+import moment from 'moment';
+
+const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+const {Option } = Select;
+const { TextArea } = Input;
+
 
 class MyForm extends React.Component {
     
@@ -56,17 +63,23 @@ class MyForm extends React.Component {
     };
 
     handleNameChange = e => this.setState({name: e.target.value})
-    handleTypeNameChange = e => this.setState({type_name: e.target.value})
+    handleTypeNameChange = value => this.setState({type_name: value})
     handleSpecificationChange = e => this.setState({specification: e.target.value})
     handleModelChange = e => this.setState({model: e.target.value})
     handleSRNoChange = e => this.setState({sr_no: e.target.value})
     handleSymbolNoChange = e => this.setState({symbol_no: e.target.value})
-    handleDateInstallationChange = e => this.setState({date_installation: e.target.value})
+//     handleDateInstallationChange = e => {
+//         console.log(e)
+//     // this.setState({date_installation: e.target.value})
+// }
     handleThresholdChange = e => this.setState({threshold: e.target.value})
     handleRemarksChange = e => this.setState({remarks: e.target.value})
     handleAttachmentChange = e => this.setState({attachment: e.target.value})
     handleIPChange = e => this.setState({ip: e.target.value})
-    
+    handleDateInstallationChange=(date, dateString) => {
+        console.log(date, dateString);
+        this.setState({date_installation: dateString})
+      }
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -79,12 +92,14 @@ class MyForm extends React.Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input
+                    <Select
                         className="form-control"
-                        placeholder="Type Name"
-                        type="text"
+                        placeholder="Select Product"
                         onChange={this.handleTypeNameChange}
-                    />
+                    >
+                        <Option value="Instrument">Instrument</Option>
+                        <Option value="Parts">Parts</Option>
+                    </Select>
                 </div>
                 <div className="form-group">
                     <input
@@ -119,11 +134,15 @@ class MyForm extends React.Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input
+                    {/* <input
                         className="form-control"
                         placeholder="Date of Installation"
                         type="text"
                         onChange={this.handleDateInstallationChange}
+                    /> */}
+                    <DatePicker 
+                    placeholder="Select Date"
+                    onChange={this.handleDateInstallationChange}
                     />
                 </div>
                 <div className="form-group">
@@ -135,11 +154,18 @@ class MyForm extends React.Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input
+                    {/* <input
                         className="form-control"
                         placeholder="Remarks"
                         type="text"
                         onChange={this.handleRemarksChange}
+                    /> */}
+                    <TextArea 
+                        className="form-control"
+                        placeholder="Remarks"
+                        type="text"
+                        onChange={this.handleRemarksChange}
+                        rows={4} 
                     />
                 </div>
                 <div className="form-group">
@@ -163,7 +189,7 @@ class MyForm extends React.Component {
                     type="submit" 
                     className="btn btn-primary"
                 >
-                    Submit
+                    Add
                 </button>
             </form>
         );
